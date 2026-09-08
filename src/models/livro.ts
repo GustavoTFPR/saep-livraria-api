@@ -11,7 +11,7 @@ export class Livro {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column()
+  @Column("string")
   titulo!: string;
 
   @Column('int')
