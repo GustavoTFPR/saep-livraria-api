@@ -20,9 +20,14 @@ export async function mostrarEditora(req: Request, res: Response): Promise<void>
 
 export async function criarEditora(req: Request, res: Response): Promise<void> {
   const dados = req.body as Partial<Editora>;
+  if (!dados.nome || !dados.cidade || !dados.email) {
+    res.status(400).json({ erro: 'Campos obrigatórios ausentes' });
+    return;
+  }
   const editora = editoras().create(dados);
   await editoras().save(editora);
   res.status(201).json(editora);
+
 }
 
 export async function atualizarEditora(req: Request, res: Response): Promise<void> {
