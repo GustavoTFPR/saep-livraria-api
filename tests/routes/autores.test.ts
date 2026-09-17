@@ -14,8 +14,17 @@ describe('Rotas de autor', () => {
     });
 
     
-    it.todo('GET /autores/1 devolve 200 com nome "JRR Tolkien"');
-    it.todo('GET /autores/999 devolve 404');
+    it('GET /autores/1 devolve 200 com nome "JRR Tolkien"', async () => {
+      const res = await request(app).get('/autores/1');
+      expect(res.status).toBe(200);
+      expect(res.body.nome).toBe('JRR Tolkien');
+    });
+
+
+    it('GET /autores/999 devolve 404', async () => {
+      const res = await request(app).get('/autores/999');
+      expect(res.status).toBe(404);
+    });
   });
  
   describe('Criação', () => {
