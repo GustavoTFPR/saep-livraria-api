@@ -75,7 +75,12 @@ describe('Rotas de autor', () => {
   });
 
   describe('Relacional', () => {
-    it.todo('GET /autores/1/livros devolve 2 livros');
+    it('GET /autores/1/livros devolve 2 livros', async () => {
+      const res = await request(app).get('/autores/1/livros');
+      expect(res.status).toBe(200);
+      expect(res.body).toHaveLength(2);
+    });
+    
     it.todo('GET /autores/3/livros devolve 1 livro');
   });
 });
