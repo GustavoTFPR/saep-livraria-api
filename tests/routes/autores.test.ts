@@ -24,11 +24,25 @@ describe('Rotas de autor', () => {
       const res = await request(app).get('/autores/999');
       expect(res.status).toBe(404);
     });
-    
+
   });
  
   describe('Criação', () => {
-    it.todo('POST /autores válido (nome, nacionalidade) devolve 201 com id no corpo');
+    it('POST /autores válido (nome, nacionalidade) devolve 201 com id no corpo', async () => {
+      const dados = { nome: 'George Orwell', nacionalidade: 'Reino Unido' };
+
+      const res = await request(app).post('/autores').send(dados);
+
+      expect(res.status).toBe(201);
+      expect(res.body).toEqual(
+        expect.objectContaining({
+          id: expect.any(Number),
+          nome: dados.nome,
+          nacionalidade: dados.nacionalidade,
+        }),
+      );
+    });
+
     it.todo('POST /autores com body vazio devolve 400');
   });
  
