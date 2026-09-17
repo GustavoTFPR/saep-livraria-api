@@ -19,12 +19,12 @@ describe('Rotas de autor', () => {
       expect(res.status).toBe(200);
       expect(res.body.nome).toBe('JRR Tolkien');
     });
-
-
+    
     it('GET /autores/999 devolve 404', async () => {
       const res = await request(app).get('/autores/999');
       expect(res.status).toBe(404);
     });
+    
   });
  
   describe('Criação', () => {
