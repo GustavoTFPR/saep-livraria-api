@@ -16,6 +16,8 @@ export default tseslint.config(
   },
   {
     // nos testes lidamos com o corpo da resposta (any do supertest) — não brigar com isso
+    // no-unused-vars desligado pq o fluxo pede o plano (it.todo) com os imports já prontos
+    // pro request/app, antes de qualquer it de verdade usá-los
     files: ['tests/**/*.ts'],
     rules: {
       '@typescript-eslint/no-unsafe-assignment': 'off',
@@ -23,6 +25,7 @@ export default tseslint.config(
       '@typescript-eslint/no-unsafe-argument': 'off',
       '@typescript-eslint/no-unsafe-call': 'off',
       '@typescript-eslint/unbound-method': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
     },
   },
   {
