@@ -66,11 +66,12 @@ describe('Rotas de autor', () => {
       const res = await request(app).delete('/autores/3');
       expect(res.status).toBe(204);
     });
-
+    
     it('DELETE /autores/999 devolve 404', async () => {
       const res = await request(app).delete('/autores/999');
       expect(res.status).toBe(404);
     });
+    
   });
 
   describe('Relacional', () => {
