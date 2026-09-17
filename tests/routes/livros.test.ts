@@ -22,8 +22,23 @@ describe('Rotas de livro', () => {
     const res = await request(app).get('/livros/999');
     expect(res.status).toBe(404);
   });
-  
-  it.todo('POST /livros válido (titulo, paginas, autor_id, editora_id) devolve 201 com id no corpo');
+
+  it('POST /livros válido (titulo, paginas, autor_id, editora_id) devolve 201 com id no corpo', async () => {
+    const dados = { titulo: '1984', paginas: 328, autor_id: 2, editora_id: 1 };
+    const res = await request(app).post('/livros').send(dados);
+    expect(res.status).toBe(201);
+    expect(res.body).toEqual(
+      expect.objectContaining({
+        id: expect.any(Number),
+        titulo: dados.titulo,
+        paginas: dados.paginas,
+        autor_id: dados.autor_id,
+        editora_id: dados.editora_id,
+      }),
+    );
+
+  });
+
   it.todo('PUT /livros/1 (paginas) devolve 200 com a paginação nova');
   it.todo('DELETE /livros/5 devolve 204');
 });
