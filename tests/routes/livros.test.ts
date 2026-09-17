@@ -39,6 +39,11 @@ describe('Rotas de livro', () => {
 
   });
 
-  it.todo('PUT /livros/1 (paginas) devolve 200 com a paginação nova');
+  it('PUT /livros/1 (paginas) devolve 200 com a paginação nova', async () => {
+    const res = await request(app).put('/livros/1').send({ paginas: 400 });
+    expect(res.status).toBe(200);
+    expect(res.body.paginas).toBe(400);
+  });
+
   it.todo('DELETE /livros/5 devolve 204');
 });
