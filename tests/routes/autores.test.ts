@@ -40,17 +40,23 @@ describe('Rotas de autor', () => {
           nacionalidade: dados.nacionalidade,
         }),
       );
+      
     });
 
     it('POST /autores com body vazio devolve 400', async () => {
       const res = await request(app).post('/autores').send({});
       expect(res.status).toBe(400);
     });
-    
+
   });
  
   describe('Atualização e exclusão', () => {
-    it.todo('PUT /autores/1 (nacionalidade) devolve 200 com a nacionalidade nova');
+    it('PUT /autores/1 (nacionalidade) devolve 200 com a nacionalidade nova', async () => {
+      const res = await request(app).put('/autores/1').send({ nacionalidade: 'Nova Zelândia' });
+      expect(res.status).toBe(200);
+      expect(res.body.nacionalidade).toBe('Nova Zelândia');
+    });
+
     it.todo('PUT /autores/999 devolve 404');
     it.todo('DELETE /autores/3 devolve 204');
     it.todo('DELETE /autores/999 devolve 404');
