@@ -45,5 +45,9 @@ describe('Rotas de livro', () => {
     expect(res.body.paginas).toBe(400);
   });
 
-  it.todo('DELETE /livros/5 devolve 204');
+  it('DELETE /livros/5 devolve 204', async () => {
+    const res = await request(app).delete('/livros/5');
+    expect(res.status).toBe(204);
+  });
+  
 });
