@@ -30,7 +30,6 @@ describe('Rotas de autor', () => {
   describe('Criação', () => {
     it('POST /autores válido (nome, nacionalidade) devolve 201 com id no corpo', async () => {
       const dados = { nome: 'George Orwell', nacionalidade: 'Reino Unido' };
-
       const res = await request(app).post('/autores').send(dados);
 
       expect(res.status).toBe(201);
@@ -43,7 +42,11 @@ describe('Rotas de autor', () => {
       );
     });
 
-    it.todo('POST /autores com body vazio devolve 400');
+    it('POST /autores com body vazio devolve 400', async () => {
+      const res = await request(app).post('/autores').send({});
+      expect(res.status).toBe(400);
+    });
+    
   });
  
   describe('Atualização e exclusão', () => {
