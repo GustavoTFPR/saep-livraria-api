@@ -7,7 +7,13 @@ afterAll(fecharBanco);
 
 describe('Rotas de autor', () => {
   describe('Listagem e busca', () => {
-    it.todo('GET /autores devolve 200 com 3 autores');
+    it('GET /autores devolve 200 com 3 autores', async () => {
+      const res = await request(app).get('/autores');
+      expect(res.status).toBe(200);
+      expect(res.body).toHaveLength(3);
+    });
+
+    
     it.todo('GET /autores/1 devolve 200 com nome "JRR Tolkien"');
     it.todo('GET /autores/999 devolve 404');
   });
@@ -23,7 +29,7 @@ describe('Rotas de autor', () => {
     it.todo('DELETE /autores/3 devolve 204');
     it.todo('DELETE /autores/999 devolve 404');
   });
- 
+
   describe('Relacional', () => {
     it.todo('GET /autores/1/livros devolve 2 livros');
     it.todo('GET /autores/3/livros devolve 1 livro');
