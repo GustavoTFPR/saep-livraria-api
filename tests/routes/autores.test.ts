@@ -80,7 +80,13 @@ describe('Rotas de autor', () => {
       expect(res.status).toBe(200);
       expect(res.body).toHaveLength(2);
     });
-    
-    it.todo('GET /autores/3/livros devolve 1 livro');
+
+    it('GET /autores/3/livros devolve 1 livro', async () => {
+      const res = await request(app).get('/autores/3/livros');
+      expect(res.status).toBe(200);
+      expect(res.body).toHaveLength(1);
+    });
+
   });
+  
 });
