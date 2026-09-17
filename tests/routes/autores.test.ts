@@ -40,7 +40,7 @@ describe('Rotas de autor', () => {
           nacionalidade: dados.nacionalidade,
         }),
       );
-      
+
     });
 
     it('POST /autores com body vazio devolve 400', async () => {
@@ -57,7 +57,11 @@ describe('Rotas de autor', () => {
       expect(res.body.nacionalidade).toBe('Nova Zelândia');
     });
 
-    it.todo('PUT /autores/999 devolve 404');
+    it('PUT /autores/999 devolve 404', async () => {
+      const res = await request(app).put('/autores/999').send({ nacionalidade: 'Nova Zelândia' });
+      expect(res.status).toBe(404);
+    });
+
     it.todo('DELETE /autores/3 devolve 204');
     it.todo('DELETE /autores/999 devolve 404');
   });
