@@ -17,8 +17,12 @@ describe('Rotas de livro', () => {
     expect(res.status).toBe(200);
     expect(res.body.titulo).toBe('O Hobbit');
   });
+
+  it('GET /livros/999 devolve 404', async () => {
+    const res = await request(app).get('/livros/999');
+    expect(res.status).toBe(404);
+  });
   
-  it.todo('GET /livros/999 devolve 404');
   it.todo('POST /livros válido (titulo, paginas, autor_id, editora_id) devolve 201 com id no corpo');
   it.todo('PUT /livros/1 (paginas) devolve 200 com a paginação nova');
   it.todo('DELETE /livros/5 devolve 204');
